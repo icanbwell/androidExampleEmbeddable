@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<!--    <script src="https://embeddables.prod.icanbwell.com/welcome/0.0.37/loader/index.js"></script>-->
+    <script type="text/javascript">
+    async function onClick() {
+<!--      JSBridge.log(`onClick: starting`);-->
+      const clientKey = "n2zmy2rim2etmjk0ms0xmwvklweynjetmdi0mmfjmtiwmday";
+      const authenticationJWT =
+        "eyJhbGciOiJFQ0RILUVTIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImVwayI6eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6Ikl6X2x3dTkzYk1Pa0x4eUJMVEFxek9GMW1RZVpRWGh3Tmdqel9sMXRwcUkiLCJ5IjoiMTBsUFhQcGNaZzRCbzY1ZElZcnhvR3RpV3FSRE5ZWTdsZllPME5UdXVScyJ9fQ..ts2O4OLSEpbcCWwBg8cevw.0iHt93KhcLRgURci0dmPzQplbZN3qqFPPCyI-a9Dnm0UfAVMLz4fcJyCq9W7uoYJHPdmNCd-mg5QJLdwodhTir8vGNNXpfzlUhx_H1iEXg5hlbnGHaaNCEzk5-DDjEjAXE2HlJBBsowPAdkz2Ha9Wr7bozOvPcb6DylB5wrlTlYV16WrQP-_YXNWNPCkwhFNx4lj9eP3598aYt25qXxA--FXEToLr4feyXpP3L7UOCdvhakmJBCL-jKnO7uanb7uS8FSMtSYOt8gYzXRAuQcC0H5UjM1KNOl3Y4Kh8ctduWTsPct9v5pmgAMwxfaXpDfW3ArJG5mmKBmONkJGlZYji3nFeHXandlVqqqfmK3qXosnhQucqHKcCsTIFpy9bjnvgwlKmEin0mbQ7qy6Z4bjLwYaEA9EzoRNGCaU8WndVp2giKWhmVqpQKTC_RATJCF_fU4YEccJyyBzW6VQYYFHaMhIpqeNSeT7ZG4E4So0EHhemdq1Ul-7QC7LEceeUaXbc4cOdItLNYbVRG_4y8mUgommWErnPLswPFAik57dmAQDyBbBqAAMj15V1Dkd6XLwvo-1LS0oWLtU9G8usH4Zbg4RJaY5w8Udl5eLfjRcG_LAMOMYjD1ZPcLWUtBf3vqAcQwmZ1oUxz-w0M5ZB60UAp2pLBJrFldtgVg-tKKe7Os-6iUgL5l7T-jmvElliCKhRLd8Yo8e6bwGHbw78vZCpfVZdfPm9rjliLt7ZZ4UgxjROmbrWlp485A2qkp4qUXQGcCeIbWzcA7gqwwEssOXPXhUfzOGepHk9PLNPazZOJULxY9AGZgQv-4zM6U2bvDVtL7-doNzhv7vxkq-T9OlIIVr98bFfMmSsXQMRRRN4lvCrSPjQCPoGes66gPGzzAMkooCclaD-C6kdR5TE6btrq6XMFvrrA5E7Eb1UeK7uYgj1f1CqArOPyxe_944f-11akiE2uSS_eL44XNC9urJAn8dDR902dLGWZG3PmdL9Y._Y-IMJvAJtv9M7n27UL7zQ";
+      JSBridge.log(`onClick: calling init`);
+      const bObj = globalThis.bwell;
+      JSBridge.log(`onClick: bwell: ${JSON.stringify(bObj)}`);
+      await bObj.init(clientKey);
+<!--      JSBridge.log(`onClick: init complete: ${JSON.stringify($(bObj))}`);-->
+      JSBridge.log(`onClick: init complete`);
+      try {
+        JSBridge.log(`onClick: ready to set user to ${authenticationJWT}`);
+        const jwtContents = await bwell.setUserToken(authenticationJWT);
+        JSBridge.log(`onClick: setUserToken complete ${jwtContents}`);
+      } catch (e) {
+        console.log(`ERROR: `, e);
+      }
+      JSBridge.log(`onClick: complete`);
+    }
+  </script>
+</head>
+<body>
+<script src="https://embeddables.prod.icanbwell.com/welcome/0.0.37/loader/index.js"></script>
+<!--<p style="font-size:20pt;">WebView containing b.well embedded module</p>-->
+<br><br>
+<div style="text-align: center;">
+    <button
+            style="background-color: #323264; color: white; padding: 10px;"
+            onClick="{onClick()}"
+    >
+        Click here to show welcome embeddable...
+    </button>
+</div>
+<div style="
+      padding-top: 25px;
+      position: relative;
+      height: 100%;
+      min-height: 768px;
+      min-width: 418px;
+      text-align: center;
+    "
+>
+    <bwell-welcome></bwell-welcome>
+</div>
+</script>
+<style>
+	body {
+	background-color: #F3B874
+	}
+</style>
+</body>
+</html>
